@@ -29,13 +29,19 @@ var syn = syn || (function(WS) {
 			}
 
 			connect = function() {
-				return this;
+				return instance;
 			};
 
 			return this;
 		},
 
 		getInstance = function() {
+			if (typeof instance === 'undefined') {
+				throw {
+					name: 'WebSocket errer',
+					message: 'Invoke syn.connect(server) first'
+				}
+			}
 			return instance;
 		},
 
